@@ -8,7 +8,7 @@ import { AlertController, ToastController } from '@ionic/angular';
   styleUrls: ['./passwords.page.scss'],
 })
 export class PasswordsPage implements OnInit {
-type: any;
+
   constructor(
     private alertController: AlertController,
     public passwordService: PasswordService,
