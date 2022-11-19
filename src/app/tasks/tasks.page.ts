@@ -87,7 +87,6 @@ type : String="pending";
   async presentAlertPromptUptade(index: number, task: any) {
     const alert = await this.alertController.create({
       header: 'Atualizar tarefa',
-      message: 'Tem certeza disso?',
       inputs: [
         {
           name: 'title',
