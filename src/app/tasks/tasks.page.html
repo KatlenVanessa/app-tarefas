@@ -9,11 +9,11 @@
 
 <ion-content>
 
-  <ion-segment [scrollable]="true" value="heart">
-    <ion-segment-button value="pedent">
+  <ion-segment ngModel="type">
+    <ion-segment-button value="pending">
       <ion-icon name="alert-outline"></ion-icon>
     </ion-segment-button>
-    <ion-segment-button value="check">
+    <ion-segment-button value="done">
       <ion-icon name="checkmark-done-outline"></ion-icon>
     </ion-segment-button>
   </ion-segment>
@@ -36,7 +36,6 @@
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
-
   </ion-list>
 
     <!-- fab placed to the (vertical) bottom and end -->

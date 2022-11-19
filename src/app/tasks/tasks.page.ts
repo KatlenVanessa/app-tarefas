@@ -10,7 +10,9 @@ import { AlertController, PopoverController, ToastController } from '@ionic/angu
   styleUrls: ['./tasks.page.scss'],
 })
 export class TasksPage implements OnInit {
-type: any;
+
+type : String="pending";
+
   constructor(
     private alertController: AlertController,
     public taskService: TasksService,
