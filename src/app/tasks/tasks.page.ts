@@ -19,6 +19,12 @@ type : String="pending";
     public toastController: ToastController,
     public popoverController: PopoverController
   ) {}
+
+  ngOnInit() {
+    this.taskService.getFromStorage();
+
+  }
+
   async presentAlertPromptAdd() {
     const alert = await this.alertController.create({
       header: 'Adicionar',
@@ -75,7 +81,8 @@ type : String="pending";
         {
           text: 'Excluir',
           handler: () => {
-              this.taskService.delTask(index);
+            this.deleteTaskToast();
+            this.taskService.delTask(index);
             }
           }
       ],
@@ -120,6 +127,7 @@ type : String="pending";
           handler: (data) => {
             if ((data.task !== '') && (data.title !== '')) {
               this.taskService.uptadeTask(index, data.title, data.task, data.date);
+              this.uptadeToast();
             } else {
               this.presentToast();//Mensagem de alerta
               this.presentAlertPromptUptade(index, task);//Montra a janela
@@ -139,6 +147,23 @@ type : String="pending";
     toast.present();
   }
 
+  async uptadeToast() {
+    const toast = await this.toastController.create({
+      message: 'Tarefa Atualizada',
+      duration: 2000,
+    });
+    toast.present();
+  }
 
-  ngOnInit() {}
+  async deleteTaskToast() {
+    const toast = await this.toastController.create({
+      message: 'Tarefa Deletada',
+      duration: 2000,
+    });
+    toast.present();
+  }
+
+
+
+
 }

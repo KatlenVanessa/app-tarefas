@@ -1,6 +1,15 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="secondary">
-    <ion-title>Tarefas</ion-title>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="ion-text-center">
+            <ion-title>Tarefas</ion-title>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -22,7 +31,7 @@
     <ion-item-sliding *ngFor = "let task of taskService.getTasks(); let i = index">
       <ion-item *ngIf="!task.done">
         <ion-label>{{task.title}}</ion-label>
-        <ion-checkbox slot="start" [(ngModel)]="task.done"></ion-checkbox>
+        <ion-checkbox slot="start" [(ngModel)]="task.done" (ionChange)="taskService.setStorage()"></ion-checkbox>
         <ion-badge color = "secondary" *ngIf="task.date.getDate()">
           {{task.date.getDate()+"/"+(task.date.getMonth()+1)+"/"+task.date.getFullYear()}}
         </ion-badge>
@@ -43,7 +52,7 @@
     <ion-item-sliding *ngFor = "let task of taskService.getTasks(); let i = index">
       <ion-item *ngIf="task.done">
         <ion-label>{{task.title}}</ion-label>
-        <ion-checkbox slot="start" [(ngModel)]="task.done"></ion-checkbox>
+        <ion-checkbox slot="start" [(ngModel)]="task.done" (ionChange)="taskService.setStorage()"></ion-checkbox>
         <ion-badge color = "secondary" *ngIf="task.date.getDate()">
           {{task.date.getDate()+"/"+(task.date.getMonth()+1)+"/"+task.date.getFullYear()}}
         </ion-badge>

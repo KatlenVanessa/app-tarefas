@@ -15,6 +15,10 @@ export class PasswordsPage implements OnInit {
     public toastController: ToastController
   ) {}
 
+  ngOnInit() {
+    this.passwordService.getFromStorage();
+  }
+
   async presentAlertPromptAdd() {
     const alert = await this.alertController.create({
       header: 'Adicionar',
@@ -64,6 +68,7 @@ export class PasswordsPage implements OnInit {
         {
           text: 'Excluir',
           handler: () => {
+            this.deletePasswordToast()
               this.passwordService.delPassword(index);
             }
           }
@@ -120,5 +125,13 @@ export class PasswordsPage implements OnInit {
     });
     toast.present();
   }
-  ngOnInit() {}
+
+  async deletePasswordToast() {
+    const toast = await this.toastController.create({
+      message: 'Senha Deletada',
+      duration: 2000,
+    });
+    toast.present();
+  }
+
 }
