@@ -69,6 +69,22 @@ type : String="pending";
     await alert.present();
   }
 
+  async presentAlertPromptDescricao(index: number) {
+    const alert = await this.alertController.create({
+      header: 'Tarefa',
+      message: 'testando',
+      buttons: [
+        {
+          text: 'sair',
+          role: 'cancel',
+        }
+      ],
+    });
+
+    await alert.present();
+  }
+
+
   async presentAlertPromptDelete(index: number) {
     const alert = await this.alertController.create({
       header: 'Excluir',
