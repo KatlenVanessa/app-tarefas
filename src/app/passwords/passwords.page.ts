@@ -110,6 +110,7 @@ export class PasswordsPage implements OnInit {
               this.presentToast();
               this.presentAlertPromptUptade(index, password);
             }
+            this.updatePasswordToast();
           },
         },
       ],
@@ -133,5 +134,14 @@ export class PasswordsPage implements OnInit {
     });
     toast.present();
   }
+
+  async updatePasswordToast() {
+    const toast = await this.toastController.create({
+      message: 'Senha Atualizada',
+      duration: 2000,
+    });
+    toast.present();
+  }
+
 
 }

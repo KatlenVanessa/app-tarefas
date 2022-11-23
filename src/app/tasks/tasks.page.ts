@@ -127,11 +127,11 @@ type : String="pending";
           handler: (data) => {
             if ((data.task !== '') && (data.title !== '')) {
               this.taskService.uptadeTask(index, data.title, data.task, data.date);
-              this.uptadeToast();
             } else {
               this.presentToast();//Mensagem de alerta
               this.presentAlertPromptUptade(index, task);//Montra a janela
             }
+            this.updateTaskToast();
           },
         }
       ],
@@ -147,7 +147,7 @@ type : String="pending";
     toast.present();
   }
 
-  async uptadeToast() {
+  async updateTaskToast() {
     const toast = await this.toastController.create({
       message: 'Tarefa Atualizada',
       duration: 2000,
