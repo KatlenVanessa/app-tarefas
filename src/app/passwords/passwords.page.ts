@@ -30,7 +30,7 @@ export class PasswordsPage implements OnInit {
         },
         {
           name: 'password',
-          type: 'textarea',
+          type: 'password',
           placeholder: 'Senha',
         },
       ],
