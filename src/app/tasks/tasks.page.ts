@@ -69,13 +69,13 @@ type : String="pending";
     await alert.present();
   }
 
-  async presentAlertPromptDescricao(index: number) {
+  async presentAlertPromptDescricao(index: number, task: any) {
     const alert = await this.alertController.create({
-      header: 'Tarefa',
-      message: 'testando',
+      header: task.title,
+      message: task.value,
       buttons: [
         {
-          text: 'sair',
+          text: 'ok',
           role: 'cancel',
         }
       ],
@@ -84,6 +84,27 @@ type : String="pending";
     await alert.present();
   }
 
+  async presentAlertPromptDone(index: number, task: any) {
+    const alert = await this.alertController.create({
+      header: 'Confirmação',
+      message: 'Tem certeza disso?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+        {
+          text: 'Confirmar',
+          handler: () => {
+            this.doneTaskToast();
+            this.taskService.doneTask(index);
+          }
+          }
+      ],
+    });
+
+    await alert.present();
+  }
 
   async presentAlertPromptDelete(index: number) {
     const alert = await this.alertController.create({
@@ -174,6 +195,14 @@ type : String="pending";
   async deleteTaskToast() {
     const toast = await this.toastController.create({
       message: 'Tarefa Deletada',
+      duration: 2000,
+    });
+    toast.present();
+  }
+
+  async doneTaskToast() {
+    const toast = await this.toastController.create({
+      message: 'Tarefa Concluida',
       duration: 2000,
     });
     toast.present();

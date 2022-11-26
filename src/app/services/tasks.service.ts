@@ -23,6 +23,18 @@ export class TasksService {
     this.setStorage();
   }
 
+  public trashTask(index: number){
+    let task : Task = this.tasks[index];
+    task.trash = true;
+    this.setStorage();
+  }
+
+  public doneTask(index: number){
+    let task : Task = this.tasks[index];
+    task.done = !task.done;
+    this.setStorage();
+  }
+
   public delTask(index: number){
     this.tasks.splice(index, 1);
     this.setStorage();
@@ -73,4 +85,5 @@ interface Task {
   value: string;
   date: Date;
   done?: boolean;
+  trash?: boolean;
 }
