@@ -56,6 +56,21 @@ export class PasswordsPage implements OnInit {
     await alert.present();
   }
 
+  async presentAlertPromptDescricao(index: number, password: any) {
+    const alert = await this.alertController.create({
+      header: password.title,
+      message: password.value,
+      buttons: [
+        {
+          text: 'ok',
+          role: 'cancel',
+        }
+      ],
+    });
+
+    await alert.present();
+  }
+
   async presentAlertPromptDelete(index: number) {
     const alert = await this.alertController.create({
       header: 'Excluir',
@@ -80,8 +95,7 @@ export class PasswordsPage implements OnInit {
 
   async presentAlertPromptUptade(index: number, password: { title: any; value: any; }) {
     const alert = await this.alertController.create({
-      header: 'Atualizar tarefa',
-      message: 'Tem certeza disso?',
+      header: 'Editar senha',
       inputs: [
         {
           name: 'title',

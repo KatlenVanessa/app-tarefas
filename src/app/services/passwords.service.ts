@@ -17,11 +17,12 @@ export class PasswordService {
   public addPassword(title: string, value: string){
     const password: Password = {title, value, done: false};
     this.passwords.push(password);
-    console.log(this.passwords);
+    this.setStorage();
   }
 
   public delPassword(index: number){
     this.passwords.splice(index,1);
+    this.setStorage();
   }
 
   public uptadePassword(index: number, title: string, value: string){
@@ -29,6 +30,7 @@ export class PasswordService {
     password.value = value;
     password.title = title;
     this.passwords.splice(index, 1, password);
+    this.setStorage();
   }
 
    // JSON "set" example

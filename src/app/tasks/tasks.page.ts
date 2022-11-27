@@ -37,9 +37,6 @@ type : String="pending";
         {
           name: 'date',
           type: 'date',
-          min: '01-01-2022',
-          max: '01-01-2030',
-          placeholder: 'dd/mm/aaaa',
         },
         {
           name: 'task',
@@ -55,7 +52,7 @@ type : String="pending";
         {
           text: 'Salvar',
           handler: (data) => {
-            if ((data.task !== '') && (data.title !== '')) {
+            if ((data.task !== '') && (data.date !== '')) {
               this.taskService.addTask(data.title, data.task, data.date);
             } else {
               this.presentAlertPromptAdd();
@@ -130,7 +127,7 @@ type : String="pending";
 
   async presentAlertPromptUptade(index: number, task: any) {
     const alert = await this.alertController.create({
-      header: 'Atualizar tarefa',
+      header: 'Editar tarefa',
       inputs: [
         {
           name: 'title',
@@ -141,11 +138,8 @@ type : String="pending";
         {
           name: 'date',
           type: 'date',
-          min: '01-01-2022',
-          max: '01-01-2030',
-          placeholder: 'dd/mm/aaaa',
           // eslint-disable-next-line max-len
-          value: task.date.getFullYear() + '-' + ((task.date.getMonth()+1) < 10 ? '0' + task.date.getMonth()+1: task.date.getMonth()+1) + '-' + ((task.date.getDay()+1) < 10 ? '0' + task.date.getDay(): task.date.getDay())
+
         },
         {
           name: 'task',
@@ -162,13 +156,14 @@ type : String="pending";
         {
           text: 'Salvar',
           handler: (data) => {
-            if ((data.task !== '') && (data.title !== '')) {
+            if ((data.task !== '') && (data.date !== '')) {
               this.taskService.uptadeTask(index, data.title, data.task, data.date);
+              this.updateTaskToast();
             } else {
               this.presentToast();//Mensagem de alerta
               this.presentAlertPromptUptade(index, task);//Montra a janela
             }
-            this.updateTaskToast();
+
           },
         }
       ],
