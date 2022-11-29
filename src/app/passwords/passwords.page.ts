@@ -1,6 +1,7 @@
 import { PasswordService } from '../services/passwords.service';
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ToastController } from '@ionic/angular';
+import { TrashService } from '../services/trash.service';
 
 @Component({
   selector: 'app-passwords',
@@ -12,6 +13,7 @@ export class PasswordsPage implements OnInit {
   constructor(
     private alertController: AlertController,
     public passwordService: PasswordService,
+    public trashService: TrashService,
     public toastController: ToastController
   ) {}
 
@@ -71,7 +73,7 @@ export class PasswordsPage implements OnInit {
     await alert.present();
   }
 
-  async presentAlertPromptDelete(index: number) {
+  async presentAlertPromptDelete(index: number, password: any) {
     const alert = await this.alertController.create({
       header: 'Excluir',
       message: 'Tem certeza disso?',
@@ -84,7 +86,8 @@ export class PasswordsPage implements OnInit {
           text: 'Excluir',
           handler: () => {
             this.deletePasswordToast()
-              this.passwordService.delPassword(index);
+            this.trashService.addPasswordTrash(password);
+            this.passwordService.delPassword(index);
             }
           }
       ],

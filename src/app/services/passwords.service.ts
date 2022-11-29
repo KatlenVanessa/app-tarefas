@@ -14,6 +14,11 @@ export class PasswordService {
     return this.passwords;
   }
 
+  public restTrash(password: Password){
+    this.passwords.push(password);
+    this.setStorage();
+  }
+
   public addPassword(title: string, value: string){
     const password: Password = {title, value, done: false};
     this.passwords.push(password);

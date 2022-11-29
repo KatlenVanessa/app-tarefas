@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Data } from '@angular/router';
 import { Preferences } from '@capacitor/preferences';
-import { TrashService } from './trash.service';
-
 
 @Injectable({
   providedIn: 'root'
@@ -17,22 +15,15 @@ export class TasksService {
     return this.tasks;
   }
 
-  public addTask(title: string, value: string, date: string){
-    date = date.replace('-','/');
-    const task: Task = {title, value, date: new Date(date), done: false};
+  public restTrash(task: Task){
     this.tasks.push(task);
     this.setStorage();
   }
 
-  // public trashTask(index: number){
-  //   let task : Task = this.tasks[index];
-  //   task.trash = true;
-  //   this.setStorage();
-  // }
-
-  public trashTask(index: number){
-    let task : Task = this.tasks[index];
-    //task.trash = true;
+  public addTask(title: string, value: string, date: string){
+    date = date.replace('-','/');
+    const task: Task = {title, value, date: new Date(date), done: false};
+    this.tasks.push(task);
     this.setStorage();
   }
 
@@ -92,5 +83,4 @@ interface Task {
   value: string;
   date: Date;
   done?: boolean;
-  trash?: boolean;
 }

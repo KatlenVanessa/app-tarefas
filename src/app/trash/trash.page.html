@@ -12,24 +12,18 @@
   </ion-toolbar>
 </ion-header>
 
-<!-- <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col size ="auto">
-        <ion-checkbox></ion-checkbox>
-      </ion-col>
-      <ion-col>
-        skadjhasjdhjkas
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</ion-content> -->
-
-
-
 <ion-content>
 
-  <ion-list>
+  <ion-segment [(ngModel)]="type">
+    <ion-segment-button value="tasks">
+      <ion-icon name="receipt-outline"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="passwords">
+      <ion-icon name="lock-open-outline"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-list *ngIf="type === 'tasks'">
     <ion-item-sliding *ngFor = "let task of trashService.getTasks(); let i = index">
       <ion-item>
         <ion-grid>
@@ -45,8 +39,37 @@
           </ion-row>
         </ion-grid>
       </ion-item>
+      <ion-item-options side = "end">
+        <ion-item-option color=secondary (click)="presentAlertPromptRestTask(i, task)">
+          <ion-icon name="sync-outline" slot="icon-only"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color=danger (click)="presentAlertPromptDeleteTask(i)">
+          <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
     </ion-item-sliding>
+  </ion-list>
 
+  <ion-list *ngIf="type === 'passwords'">
+    <ion-item-sliding *ngFor = "let password of trashService.getPasswords(); let i = index">
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-label class="ion-padding-vertical">{{password.title}}</ion-label>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item-options side = "end">
+        <ion-item-option color=secondary (click)="presentAlertPromptRestPassword(i, password)">
+          <ion-icon name="sync-outline" slot="icon-only"></ion-icon>
+        </ion-item-option>
+        <ion-item-option color=danger (click)="presentAlertPromptDeletePassword(i)">
+          <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
 
 </ion-content>

@@ -118,7 +118,7 @@ type : String="pending";
           text: 'Excluir',
           handler: () => {
             this.deleteTaskToast();
-            this.trashService.addTrash(task);
+            this.trashService.addTaskTrash(task);
             this.taskService.delTask(index);
             }
           }
