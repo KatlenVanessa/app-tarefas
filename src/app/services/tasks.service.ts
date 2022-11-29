@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Data } from '@angular/router';
 import { Preferences } from '@capacitor/preferences';
+import { TrashService } from './trash.service';
 
 
 @Injectable({
@@ -23,9 +24,15 @@ export class TasksService {
     this.setStorage();
   }
 
+  // public trashTask(index: number){
+  //   let task : Task = this.tasks[index];
+  //   task.trash = true;
+  //   this.setStorage();
+  // }
+
   public trashTask(index: number){
     let task : Task = this.tasks[index];
-    task.trash = true;
+    //task.trash = true;
     this.setStorage();
   }
 

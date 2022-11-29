@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController, PopoverController, ToastController } from '@ionic/angular';
+import { TrashService } from '../services/trash.service';
+
 
 @Component({
   selector: 'app-trash',
@@ -7,7 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrashPage implements OnInit {
 
-  constructor() { }
+  constructor( private alertController: AlertController,
+    public trashService: TrashService,
+    public toastController: ToastController,
+    public popoverController: PopoverController) { }
 
   ngOnInit() {
   }

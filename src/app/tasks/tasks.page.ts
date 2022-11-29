@@ -2,6 +2,7 @@
 import { TasksService } from './../services/tasks.service';
 import { Component, OnInit } from '@angular/core';
 import { AlertController, PopoverController, ToastController } from '@ionic/angular';
+import { TrashService } from '../services/trash.service';
 
 
 @Component({
@@ -16,6 +17,7 @@ type : String="pending";
   constructor(
     private alertController: AlertController,
     public taskService: TasksService,
+    public trashService: TrashService,
     public toastController: ToastController,
     public popoverController: PopoverController
   ) {}
@@ -103,7 +105,7 @@ type : String="pending";
     await alert.present();
   }
 
-  async presentAlertPromptDelete(index: number) {
+  async presentAlertPromptDelete(index: number, task: any) {
     const alert = await this.alertController.create({
       header: 'Excluir',
       message: 'Tem certeza disso?',
@@ -116,6 +118,7 @@ type : String="pending";
           text: 'Excluir',
           handler: () => {
             this.deleteTaskToast();
+            this.trashService.addTrash(task);
             this.taskService.delTask(index);
             }
           }
@@ -139,6 +142,7 @@ type : String="pending";
           name: 'date',
           type: 'date',
           // eslint-disable-next-line max-len
+          value: task.date.getFullyear() + '-' + ((task.date.getMonth()+1) < 10 ? "0" + task.date.getMonth()+1 : task.date.getMonth()+1) + "-" + ((task.date.getDay()+1) < 10 ?"0" + task.date.getDay() : task.date.getDay())
 
         },
         {
