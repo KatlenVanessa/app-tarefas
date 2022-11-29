@@ -86,7 +86,29 @@ type : String="pending";
   async presentAlertPromptDone(index: number, task: any) {
     const alert = await this.alertController.create({
       header: 'Confirmação',
-      message: 'Tem certeza disso?',
+      message: 'Deseja marcar como concluída?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+        {
+          text: 'Confirmar',
+          handler: () => {
+            this.doneTaskToast();
+            this.taskService.doneTask(index);
+          }
+          }
+      ],
+    });
+
+    await alert.present();
+  }
+
+  async presentAlertPromptPending(index: number, task: any) {
+    const alert = await this.alertController.create({
+      header: 'Confirmação',
+      message: 'Deseja marcar como pendente?',
       buttons: [
         {
           text: 'Cancelar',
@@ -142,7 +164,7 @@ type : String="pending";
           name: 'date',
           type: 'date',
           // eslint-disable-next-line max-len
-          value: task.date.getFullyear() + '-' + ((task.date.getMonth()+1) < 10 ? "0" + task.date.getMonth()+1 : task.date.getMonth()+1) + "-" + ((task.date.getDay()+1) < 10 ?"0" + task.date.getDay() : task.date.getDay())
+          value: task.date.getFullYear + '-' + ((task.date.getMonth()+1) < 10 ? "0" + task.date.getMonth()+1 : task.date.getMonth()+1) + "-" + ((task.date.getDay()+1) < 10 ?"0" + task.date.getDay() : task.date.getDay())
 
         },
         {
