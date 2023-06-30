@@ -25,9 +25,10 @@ a criação de aplicativos nativos para iOS, Android e web usando tecnologias da
 
 ## Desenvolvedores
 
-- katlenvanessa
-- cabezadelsapito
-- edurodriguesn
+- [katlenvanessa](https://github.com/KatlenVanessa)
+- [cabezadelsapito](https://github.com/cabezadelsapito)
+- [edurodriguesn](https://github.com/edurodriguesn)
+
 
 ## Licença
 
