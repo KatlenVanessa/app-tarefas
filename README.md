@@ -1,5 +1,5 @@
 
-# App Ionic de Gerenciamento de Tarefas
+# Aplicativo de Gerenciamento de Tarefas
 
 Este é um projeto do aplicativo de Gerenciamento de Tarefas desenvolvido em Ionic, como instrumento avaliativo da disciplina de Programação 3.
 
