@@ -18,17 +18,16 @@ O aplicativo de Gerenciamento de Tarefas é uma ferramenta móvel para ajudar os
 ## Tecnologias Utilizadas
 
 - Ionic: O aplicativo é desenvolvido usando o framework Ionic, que permite a criação de aplicativos móveis multiplataforma usando tecnologias web como HTML, CSS e JavaScript.
-- Angular: O Ionic utiliza o Angular como framework para o desenvolvimento da lógica de negócio e a interação com o backend.
 - Capacitor: framework de desenvolvimento de aplicativos móveis de código aberto, criado pela equipe do Ionic. Permite 
 a criação de aplicativos nativos para iOS, Android e web usando tecnologias da web, como HTML, CSS e JavaScript.
--Android Studio: IDE (Integrated Development Environment) usada para exportar o aplicativo para o formato APK (Android Application Pack).
+- Android Studio: IDE (Integrated Development Environment) usada para exportar o aplicativo para o formato APK (Android Application Pack).
 
 
 ## Desenvolvedores
 
-@katlenvanessa
-@cabezadelsapito
-@edurodriguesn
+- @katlenvanessa
+- @cabezadelsapito
+- @edurodriguesn
 
 ## Licença
 
